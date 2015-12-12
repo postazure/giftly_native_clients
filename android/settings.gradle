@@ -1,0 +1,3 @@
+rootProject.name = 'giftly_native_client'
+
+include ':app'
