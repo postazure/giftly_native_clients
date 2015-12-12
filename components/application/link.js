@@ -18,7 +18,7 @@ export default class Link extends React.Component{
   render() {
     return (
       <TouchableHighlight onPress={this._onPressButton}>
-        <Text style={styles.link} >{this.props.text}</Text>
+        <Text style={styles.link} >{this.props.children}</Text>
       </TouchableHighlight>
     );
   }

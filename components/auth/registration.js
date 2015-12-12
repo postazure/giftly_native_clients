@@ -8,7 +8,7 @@ import Link from '../application/link'
 export default class Registration extends React.Component{
   constructor(props) {
     super(props);
-    this.sendRegistration = this.sendRegistration.bind(this);
+    this._sendRegistration = this._sendRegistration.bind(this);
     this.state = {
       userEmail: '',
       userPassword: '',
@@ -16,7 +16,7 @@ export default class Registration extends React.Component{
     };
   }
 
-  sendRegistration(){
+  _sendRegistration(){
     let formData = JSON.stringify({
       user:{
         email: this.state.userEmail,
@@ -34,7 +34,7 @@ export default class Registration extends React.Component{
     })
     .then((response) => response.json())
     .then((responseJSON) => {
-      this.props.setCurrentUser({ email: this.state.userEmail, token: responseJSON.token })
+      this.props.app_setCurrentUser({ email: this.state.userEmail, token: responseJSON.token })
     })
     .catch((error) => {
       console.warn(error);
@@ -76,7 +76,7 @@ export default class Registration extends React.Component{
           secureTextEntry={true}
           onChangeText={(txt) => this.setState({userPasswordConfirmation: txt})}
         />
-        { validPassword && validRequireFields ? <Link text="Register" onPress={this.sendRegistration} /> : null }
+        { validPassword && validRequireFields ? <Link onPress={this._sendRegistration}>Register</Link> : null }
         { !validPassword ? <Text style={styles.warning}>Password and Password Confirmation don't match</Text> : null }
       </View>
     );
