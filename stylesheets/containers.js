@@ -1,14 +1,15 @@
 module.exports = {
   view: {
-    flex: 1,
+    marginTop: 20,
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    borderWidth: 1,
+    borderColor: '#000000'
   },
   panel: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#000000',
     backgroundColor: '#F5FCFF',
-  },
+    marginLeft: 50,
+    marginRight: 50,
+  }
 }

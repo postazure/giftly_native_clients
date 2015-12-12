@@ -1,12 +1,11 @@
 module.exports = {
   textField: {
     height: 40,
-    width: 250,
-    paddingLeft: 20,
-    paddingRight: 20,
+    paddingLeft: 10,
+    paddingRight: 10,
     borderColor: 'gray',
     borderWidth: 1,
-    borderRadius: 10
+    borderRadius: 7
   },
   link: {
     fontSize: 18,
