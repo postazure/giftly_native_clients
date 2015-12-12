@@ -5,19 +5,18 @@ let { Text, TextInput, View } = React;
 import styles from '../../stylesheets/application.js'
 import Button from '../application/button'
 
-export default class Registration extends React.Component{
+export default class Signin extends React.Component{
   constructor(props) {
     super(props);
-    this._sendRegistration = this._sendRegistration.bind(this);
+    this._sendSignin = this._sendSignin.bind(this);
     this.state = {
       userEmail: '',
       userPassword: '',
-      userPasswordConfirmation: '',
       errorMsg: null
     };
   }
 
-  _sendRegistration(){
+  _sendSignin(){
     let formData = JSON.stringify({
       user:{
         email: this.state.userEmail,
@@ -25,7 +24,7 @@ export default class Registration extends React.Component{
       }
     });
 
-    fetch('http://localhost:3000/registration', {
+    fetch('http://localhost:3000/auth', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -33,28 +32,25 @@ export default class Registration extends React.Component{
       },
       body: formData
     })
-    .then((response) => response.json())
-    .then((responseJSON) => {
-      let token = responseJSON.token;
-      if (token) {
-        this.props.app_setCurrentUser({email: this.state.userEmail, token: token})
-      } else {
-        this.setState({errorMsg: responseJSON.error})
-      }
-    })
-    .catch((error) => {
-      console.warn(error);
-    })
-    .done();
+      .then((response) => response.json())
+      .then((responseJSON) => {
+        let token = responseJSON.token;
+        if (token) {
+          this.props.app_setCurrentUser({email: this.state.userEmail, token: token})
+        } else {
+          this.setState({errorMsg: responseJSON.error});
+        }
+      })
+      .catch((error) => {
+        console.warn(error);
+      })
+      .done();
   }
 
   render() {
-    let validPassword = this.state.userPassword === this.state.userPasswordConfirmation;
-
     let validRequireFields = (
       this.state.userEmail.trim() !== '' &&
-      this.state.userPassword.trim() !== '' &&
-      this.state.userPasswordConfirmation.trim() !== ''
+      this.state.userPassword.trim() !== ''
     );
 
     return (
@@ -76,16 +72,8 @@ export default class Registration extends React.Component{
           secureTextEntry={true}
           onChangeText={(txt) => this.setState({userPassword: txt})}
         />
-        <Text style={styles.label}>Password Confirmation</Text>
 
-        <TextInput
-          style={styles.textField}
-          placeholder="password"
-          secureTextEntry={true}
-          onChangeText={(txt) => this.setState({userPasswordConfirmation: txt})}
-        />
-        { validPassword && validRequireFields ? <Button onPress={this._sendRegistration}>Register</Button> : null }
-        { !validPassword ? <Text style={styles.warning}>Password and Password Confirmation don't match</Text> : null }
+        { validRequireFields ? <Button onPress={this._sendSignin}>Sign In</Button> : null }
       </View>
     );
   }
