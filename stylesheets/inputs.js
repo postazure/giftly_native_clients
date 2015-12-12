@@ -7,5 +7,11 @@ module.exports = {
     borderColor: 'gray',
     borderWidth: 1,
     borderRadius: 10
+  },
+  link: {
+    fontSize: 18,
+    textAlign: 'center',
+    color: '#1AD6FD',
+    margin: 20,
   }
 };

@@ -10,7 +10,7 @@ class Giftly extends React.Component{
   render() {
     return (
       <View style={styles.view}>
-        <Registration  styles={styles} />
+        <Registration />
       </View>
     );
   }

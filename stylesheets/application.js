@@ -1,4 +1,5 @@
-import { StyleSheet } from 'react-native'
+import React from 'react-native'
+let { StyleSheet } = React;
 
 let stylesheets = Object.assign({},
   require('./typography.js'),
