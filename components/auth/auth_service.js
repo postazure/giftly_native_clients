@@ -2,7 +2,7 @@
 
 import React from 'react-native'
 let { Text, View } = React;
-import styles from '../../stylesheets/application.js'
+import s from '../../stylesheets/application.js'
 
 import Link from '../application/link'
 import Registration from './registration'
@@ -27,12 +27,13 @@ export default class AuthService extends React.Component{
 
   registrationView(){
     return (
-      <View>
-        <View style={styles.flexContainer}>
+      <View style={s.view}>
+        <View style={s.container}>
+          <Text style={[s.h1, s.txt_c]}>Register</Text>
           <Registration app_setCurrentUser={this.props.app_setCurrentUser} />
         </View>
-        <View style={styles.gutter}>
-          <Text style={styles.instructions}>
+        <View style={s.mbxl}>
+          <Text style={s.txt_c}>
             Have an account?
           </Text>
           <Link onPress={this._showSignIn}>Sign In</Link>
@@ -43,12 +44,13 @@ export default class AuthService extends React.Component{
 
   signInView(){
     return(
-      <View>
-        <View style={styles.flexContainer}>
+      <View style={s.view}>
+        <View style={s.container}>
+          <Text style={[s.h1, s.txt_c]}>Sign In</Text>
           <Signin app_setCurrentUser={this.props.app_setCurrentUser} />
         </View>
-        <View style={styles.gutter}>
-          <Text style={styles.instructions}>
+        <View style={s.mbxl}>
+          <Text style={s.txt_c}>
             Need a new account?
           </Text>
           <Link onPress={this._showRegistration}>Register</Link>

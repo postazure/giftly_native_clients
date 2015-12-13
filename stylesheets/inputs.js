@@ -1,12 +1,4 @@
 module.exports = {
-  label: {
-    fontSize: 15,
-    fontWeight: 'bold',
-    textAlign: 'left',
-    marginTop: 10,
-    marginBottom: 3,
-  },
-
   textField: {
     height: 40,
 
@@ -22,8 +14,6 @@ module.exports = {
     fontSize: 18,
     textAlign: 'center',
     color: '#1AD6FD',
-    marginTop: 20,
-    marginBottom: 20,
   },
 
   button: {

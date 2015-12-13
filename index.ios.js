@@ -19,23 +19,23 @@ class Giftly extends React.Component{
 
   render() {
     if (!this.state.currentUser) {
-      return this._viewAuth();
+      return this._viewAuthService()
     }
-
     return (
-      <View style={styles.view}>
-        <Text>You are logged in</Text>
+      <View style={styles.body}>
+        <Text>You are logged in.</Text>
       </View>
     );
   }
 
-  _viewAuth() {
+  _viewAuthService(){
     return (
-      <View style={styles.view}>
+      <View style={styles.body}>
         <AuthService app_setCurrentUser={this.app_setCurrentUser} />
       </View>
-    )
+    );
   }
+
 }
 
 AppRegistry.registerComponent('giftly_native_client', () => Giftly);

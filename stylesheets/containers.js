@@ -1,17 +1,16 @@
 module.exports = {
-  view: {
+  body:{
     marginTop: 20,
+    flex: 1,
     flexDirection: 'column'
   },
-  flexContainer: {
+
+  view: {
     flex: 1,
-    marginLeft: 10,
-    marginRight: 10,
+    justifyContent: 'space-between'
   },
-  gutter: {
-    position: 'absolute',
-    justifyContent: 'center',
-    top: 600,
-    width: 414,
+
+  container: {
+    padding: 10
   }
 };
