@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react-native'
-let { View } = React;
+let { Text, View } = React;
 import styles from '../../stylesheets/application.js'
 
 import Link from '../application/link'
@@ -27,18 +27,32 @@ export default class AuthService extends React.Component{
 
   registrationView(){
     return (
-      <View style={styles.form}>
-        <Registration app_setCurrentUser={this.props.app_setCurrentUser} />
-        <Link onPress={this._showSignIn}>Sign In</Link>
+      <View>
+        <View style={styles.flexContainer}>
+          <Registration app_setCurrentUser={this.props.app_setCurrentUser} />
+        </View>
+        <View style={styles.gutter}>
+          <Text style={styles.instructions}>
+            Have an account?
+          </Text>
+          <Link onPress={this._showSignIn}>Sign In</Link>
+        </View>
       </View>
     )
   }
 
   signInView(){
     return(
-      <View style={styles.form}>
-        <Signin app_setCurrentUser={this.props.app_setCurrentUser} />
-        <Link onPress={this._showRegistration}>Register</Link>
+      <View>
+        <View style={styles.flexContainer}>
+          <Signin app_setCurrentUser={this.props.app_setCurrentUser} />
+        </View>
+        <View style={styles.gutter}>
+          <Text style={styles.instructions}>
+            Need a new account?
+          </Text>
+          <Link onPress={this._showRegistration}>Register</Link>
+        </View>
       </View>
     )
   }

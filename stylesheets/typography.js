@@ -14,4 +14,4 @@ module.exports = {
     textAlign: 'center',
   },
 
-};
+};2

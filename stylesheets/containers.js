@@ -1,10 +1,17 @@
 module.exports = {
   view: {
     marginTop: 20,
-    justifyContent: 'center',
+    flexDirection: 'column'
   },
-  panel: {
-    marginLeft: 50,
-    marginRight: 50,
+  flexContainer: {
+    flex: 1,
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  gutter: {
+    position: 'absolute',
+    justifyContent: 'center',
+    top: 600,
+    width: 414,
   }
-}
+};

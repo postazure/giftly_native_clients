@@ -17,8 +17,8 @@ export default class Button extends React.Component{
 
   render() {
     return (
-      <TouchableHighlight onPress={this._onPressButton}>
-        <Text style={styles.button} >{this.props.children}</Text>
+      <TouchableHighlight style={styles.button} onPress={this._onPressButton}>
+        <Text style={styles.buttonText} >{this.props.children}</Text>
       </TouchableHighlight>
     );
   }

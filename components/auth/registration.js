@@ -9,6 +9,7 @@ export default class Registration extends React.Component{
   constructor(props) {
     super(props);
     this._sendRegistration = this._sendRegistration.bind(this);
+    this._setValue = this._setValue.bind(this);
     this.state = {
       userEmail: '',
       userPassword: '',
@@ -48,6 +49,11 @@ export default class Registration extends React.Component{
     .done();
   }
 
+  _setValue(obj) {
+    let newState = Object.assign({}, obj, {errorMsg: null});
+    this.setState(newState)
+  }
+
   render() {
     let validPassword = this.state.userPassword === this.state.userPasswordConfirmation;
 
@@ -58,7 +64,7 @@ export default class Registration extends React.Component{
     );
 
     return (
-      <View style={styles.form}>
+      <View>
         { this.state.errorMsg ? <Text style={styles.warning}>{this.state.errorMsg}</Text> : null }
 
         <Text style={styles.label}>Email</Text>
@@ -67,14 +73,14 @@ export default class Registration extends React.Component{
           placeholder="scott@example.com"
           keyboardType="email-address"
           autoCapitalize="none"
-          onChangeText={(txt) => this.setState({userEmail: txt})}
+          onChangeText={(txt) => this._setValue({userEmail: txt})}
         />
         <Text style={styles.label}>Password</Text>
         <TextInput
           style={styles.textField}
           placeholder="password"
           secureTextEntry={true}
-          onChangeText={(txt) => this.setState({userPassword: txt})}
+          onChangeText={(txt) => this._setValue({userPassword: txt})}
         />
         <Text style={styles.label}>Password Confirmation</Text>
 
@@ -82,7 +88,7 @@ export default class Registration extends React.Component{
           style={styles.textField}
           placeholder="password"
           secureTextEntry={true}
-          onChangeText={(txt) => this.setState({userPasswordConfirmation: txt})}
+          onChangeText={(txt) => this._setValue({userPasswordConfirmation: txt})}
         />
         { validPassword && validRequireFields ? <Button onPress={this._sendRegistration}>Register</Button> : null }
         { !validPassword ? <Text style={styles.warning}>Password and Password Confirmation don't match</Text> : null }

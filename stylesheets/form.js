@@ -1,10 +1,4 @@
 module.exports = {
-  form: {
-    padding: 10,
-    borderColor: '#ff0000',
-    borderWidth: 1,
-  },
-
   label: {
     fontSize: 15,
     fontWeight: 'bold',
@@ -14,7 +8,6 @@ module.exports = {
   },
 
   textField: {
-    flexDirection: 'column',
     height: 40,
 
     paddingLeft: 10,
@@ -29,18 +22,21 @@ module.exports = {
     fontSize: 18,
     textAlign: 'center',
     color: '#1AD6FD',
-    margin: 20,
+    marginTop: 20,
+    marginBottom: 20,
   },
 
   button: {
     backgroundColor: '#1AD6FD',
-    color: '#ffffff',
-
-    margin: 20,
+    marginTop: 20,
+    marginBottom: 20,
     padding: 20,
+  },
 
-    borderColor: '#1a65fd',
-    borderWidth: 3,
-    borderRadius: 7
+  buttonText:{
+    textAlign: 'center',
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#ffffff',
   }
 };
