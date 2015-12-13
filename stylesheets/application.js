@@ -6,6 +6,7 @@ let stylesheets = Object.assign({},
   require('./containers.js'),
   require('./inputs.js'),
   require('./layout.js'),
+  require('./buttons.js'),
   require('./helpers.js')
 );
 

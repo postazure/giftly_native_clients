@@ -6,6 +6,7 @@ module.exports = {
   },
 
   warning: {
+    marginVertical: 5,
     color: '#cc0000',
     textAlign: 'center',
   },

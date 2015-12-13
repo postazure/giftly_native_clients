@@ -69,7 +69,7 @@ export default class Signin extends React.Component{
           placeholder="scott@example.com"
           keyboardType="email-address"
           autoCapitalize="none"
-          onChangeText={(txt) => this._setValue({userEmail: txt})}
+          onChangeText={(txt) => this._setValue({userEmail: txt.trim()})}
         />
         <Text style={styles.label}>Password</Text>
         <TextInput

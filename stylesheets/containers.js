@@ -12,5 +12,11 @@ module.exports = {
 
   container: {
     padding: 10
+  },
+
+  menuBar: {
+    flex: 1,
+    flexDirection: 'row',
   }
+
 };
