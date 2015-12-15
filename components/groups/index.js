@@ -2,7 +2,7 @@
 
 import React from 'react-native'
 import moment from 'moment'
-let { View, ListView, Text } = React;
+let { View, Text } = React;
 import s from '../../stylesheets/application.js'
 import Button from '../application/button'
 
