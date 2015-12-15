@@ -5,7 +5,7 @@ let { View } = React;
 import s from '../../stylesheets/application.js'
 
 import Link from '../application/link'
-import Item from './menu_bar_item'
+import Item from './menu_tray_item'
 
 export default class MenuBar extends React.Component{
   render() {

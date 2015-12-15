@@ -2,41 +2,42 @@
 
 import React from 'react-native'
 let { AppRegistry, Text, View } = React;
-import styles from './stylesheets/application.js'
+import s from './stylesheets/application.js'
 
-import AuthService from './components/auth/auth_service'
+import AuthController from './components/auth/auth_controller'
 import MenuBar from './components/menu/menu_bar'
+import GroupsController from './components/groups/groups_controller'
 
 class Giftly extends React.Component{
   constructor(props) {
     super(props);
     this.app_setCurrentUser = this.app_setCurrentUser.bind(this);
     this.state = {
-      currentUser: {email: 'foo@bar.com', token: '123456'},
+      currentUser: {email: 'm@m.com', token: 'rE43TLcbUgKK4mT8nbvMudc8'},
+      //currentUser: null,
       currentView: 'Groups'
-
     };
   }
 
-  _viewAuthService(){
+  view_AuthController(){
     return (
-      <View style={styles.body}>
-        <AuthService app_setCurrentUser={this.app_setCurrentUser} />
+      <View style={s.body}>
+        <AuthController app_setCurrentUser={this.app_setCurrentUser} />
       </View>
     );
   }
 
-  _viewGroups(){
+  view_Groups(){
     return (
-      <View style={styles.view}>
-        <Text>You are Groups.</Text>
+      <View style={s.view}>
+        <GroupsController currentUser={this.state.currentUser} />
       </View>
     );
   }
 
-  _viewBar(){
+  view_Bar(){
     return (
-      <View style={styles.view}>
+      <View style={s.view}>
         <Text>You are Bar.</Text>
       </View>
     );
@@ -54,9 +55,9 @@ class Giftly extends React.Component{
     let menuBarActions = this.getMenuActions();
 
     return (
-      <View style={styles.body}>
-        {currentView}
+      <View style={s.body}>
         {this.state.currentUser ? <MenuBar actions={menuBarActions}/> : null }
+        {currentView}
       </View>
     );
   }
@@ -70,9 +71,8 @@ class Giftly extends React.Component{
   }
 
   getCurrentView() {
-    if (!this.state.currentUser) {return this._viewAuthService()}
-    return this[`_view${this.state.currentView}`]()
-
+    if (!this.state.currentUser) {return this.view_AuthController()}
+    return this[`view_${this.state.currentView}`]()
   }
 
   getMenuActions(){

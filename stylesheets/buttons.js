@@ -33,5 +33,21 @@ module.exports = {
     fontWeight: '600',
     fontSize: 18,
     color: c.dark_tan,
+  },
+
+  menuButtonHeader: {
+    flex: 1,
+    backgroundColor: c.dark_tan,
+    height: 30,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+
+  menuButtonTextHeader: {
+    fontWeight: '600',
+    fontSize: 18,
+    color: c.creamy_yellow,
   }
+
+
 }
