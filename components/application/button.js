@@ -1,8 +1,8 @@
 'use strict';
 
 import React from 'react-native'
-let { Text, TouchableHighlight } = React;
-import styles from '../../stylesheets/application.js'
+let { Text, TouchableHighlight, View } = React;
+import s from '../../stylesheets/application.js'
 
 export default class Button extends React.Component{
   constructor(props){
@@ -16,11 +16,24 @@ export default class Button extends React.Component{
   }
 
   render() {
+    if (this.props.disabled) {
+      return this.disabledButton();
+    }
+
+
     return (
-      <TouchableHighlight style={styles.button} onPress={this._onPressButton}>
-        <Text style={styles.buttonText} >{this.props.children}</Text>
+      <TouchableHighlight style={s.button} onPress={this._onPressButton}>
+        <Text style={s.buttonText} >{this.props.children}</Text>
       </TouchableHighlight>
     );
+  }
+
+  disabledButton() {
+    return (
+      <View style={s.buttonDisabled}>
+        <Text style={s.buttonText} >{this.props.children}</Text>
+      </View>
+    )
   }
 }
 

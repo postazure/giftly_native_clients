@@ -76,7 +76,7 @@ export default class Signin extends React.Component{
           onChangeText={(txt) => this._setValue({userPassword: txt})}
         />
 
-        { validRequireFields ? <Button onPress={this._sendSignin}>Sign In</Button> : null }
+        <Button onPress={this._sendSignin} disabled={!validRequireFields} >Sign In</Button>
       </View>
     );
   }

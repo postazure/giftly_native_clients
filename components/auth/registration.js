@@ -85,7 +85,7 @@ export default class Registration extends React.Component{
           secureTextEntry={true}
           onChangeText={(txt) => this._setValue({userPasswordConfirmation: txt})}
         />
-        { validPassword && validRequireFields ? <Button onPress={this._sendRegistration}>Register</Button> : null }
+        <Button onPress={this._sendRegistration} disabled={!(validPassword && validRequireFields)}>Register</Button>
         { !validPassword ? <Text style={styles.warning}>Password and Password Confirmation don't match</Text> : null }
       </View>
     );

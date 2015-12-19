@@ -14,6 +14,13 @@ module.exports = {
     padding: 20,
   },
 
+  buttonDisabled: {
+    backgroundColor: '#E8FAFE',
+    marginTop: 20,
+    marginBottom: 20,
+    padding: 20,
+  },
+
   buttonText:{
     textAlign: 'center',
     fontSize: 18,
