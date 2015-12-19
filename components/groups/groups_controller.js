@@ -1,20 +1,24 @@
 'use strict';
 
 import React from 'react-native'
-let { View, Text, ListView } = React;
+let { View } = React;
 import s from '../../stylesheets/application.js'
 import Menu from '../menu/menu_tray'
 import Index from './index'
 import New from './new'
+import ApiClient from '../../app/api_client'
+let apiClient = ApiClient.est();
 
 export default class GroupsController extends React.Component{
   constructor(props) {
     super(props);
+
     this.state = {
       currentView: 'Index',
       groups: []
     };
-    this.getGroups();
+    this.fetchGroups();
+
     this.createGroup = this.createGroup.bind(this);
   }
 
@@ -40,44 +44,27 @@ export default class GroupsController extends React.Component{
     );
   }
 
-  getGroups() {
-    fetch('http://localhost:3000/groups',{
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'User-Token': this.props.currentUser.token
-      }
-    })
-    .then((response) => response.json())
-    .then((responseData) => {
-      this._setGroups(responseData);
-    })
-    .done();
+  fetchGroups(){
+    apiClient.get({resource: 'groups'},
+      this._setGroups.bind(this)
+    )
   }
 
   createGroup(data) {
-    let formData = JSON.stringify({ group: data })
-
-    fetch('http://localhost:3000/groups',{
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'User-Token': this.props.currentUser.token
+    apiClient.post({
+        resource: 'groups'
       },
-      body: formData
-    })
-    .then((response) => response.json())
-    .then((responseData) => {
-      this._addGroup(responseData, this._setCurrentView('Index'))
-    })
-    .done();
+      { group: data },
+      this._addGroup.bind(this)
+    );
   }
 
-  _addGroup(newGroup, cb) {
+  _addGroup(newGroup) {
     let groups = Object.assign([], this.state.groups);
-    this._setGroups(groups.concat(newGroup), cb)
+    this._setGroups(groups.concat(newGroup),
+      this._setCurrentView.bind(this, 'Index')
+    );
+
   }
 
   _setGroups(groups, cb) {

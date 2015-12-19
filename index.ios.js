@@ -8,10 +8,14 @@ import AuthController from './components/auth/auth_controller'
 import MenuBar from './components/menu/menu_bar'
 import GroupsController from './components/groups/groups_controller'
 
+import ApiClient from './app/api_client'
+let apiClient = ApiClient.est();
+
 class Giftly extends React.Component{
   constructor(props) {
     super(props);
     this.app_setCurrentUser = this.app_setCurrentUser.bind(this);
+    apiClient.setUserToken("rE43TLcbUgKK4mT8nbvMudc8");
     this.state = {
       currentUser: {email: 'm@m.com', token: 'rE43TLcbUgKK4mT8nbvMudc8'},
       //currentUser: null,
@@ -63,6 +67,12 @@ class Giftly extends React.Component{
   }
 
   app_setCurrentUser(user) {
+    if (user) {
+      apiClient.setUserToken(user.token);
+    } else {
+      apiClient.clearUserToken();
+    }
+
     this.setState({currentUser: user});
   }
 
