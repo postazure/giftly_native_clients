@@ -40,7 +40,7 @@ export default class ApiClient {
     return this.headers;
   }
 
-  get(uriInfo, cb, afterCB){
+  get(uriInfo, cb){
     let url = this._buildURL(uriInfo);
     let headers = uriInfo.headers || this.getHeaders();
 
@@ -50,7 +50,7 @@ export default class ApiClient {
     })
     .then((response) => response.json())
     .then((responseData) => {
-      cb(responseData, afterCB)
+      cb(responseData)
     })
     .done();
   }
