@@ -17,8 +17,8 @@ class Giftly extends React.Component{
     this.app_setCurrentUser = this.app_setCurrentUser.bind(this);
     apiClient.setUserToken("rE43TLcbUgKK4mT8nbvMudc8");
     this.state = {
-      currentUser: {email: 'm@m.com', token: 'rE43TLcbUgKK4mT8nbvMudc8'},
-      //currentUser: null,
+      //currentUser: {email: 'm@m.com', token: 'rE43TLcbUgKK4mT8nbvMudc8'},
+      currentUser: null,
       currentView: 'Groups'
     };
   }

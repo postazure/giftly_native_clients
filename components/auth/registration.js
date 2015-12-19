@@ -4,6 +4,8 @@ import React from 'react-native'
 let { Text, TextInput, View } = React;
 import styles from '../../stylesheets/application.js'
 import Button from '../application/button'
+import ApiClient from '../../app/api_client'
+let apiClient = ApiClient.est();
 
 export default class Registration extends React.Component{
   constructor(props) {
@@ -19,34 +21,27 @@ export default class Registration extends React.Component{
   }
 
   _sendRegistration(){
-    let formData = JSON.stringify({
+    let formData = {
       user:{
         email: this.state.userEmail,
         password: this.state.userPassword
       }
-    });
-
-    fetch('http://localhost:3000/registration', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
+    };
+    apiClient.post({
+        resource: 'registration'
       },
-      body: formData
-    })
-    .then((response) => response.json())
-    .then((responseJSON) => {
-      let token = responseJSON.token;
-      if (token) {
-        this.props.app_setCurrentUser({email: this.state.userEmail, token: token})
-      } else {
-        this.setState({errorMsg: responseJSON.error})
-      }
-    })
-    .catch((error) => {
-      console.warn(error);
-    })
-    .done();
+      formData,
+      this._updateCurrentUser.bind(this)
+    )
+  }
+
+  _updateCurrentUser(data) {
+    let token = data.token;
+    if (token) {
+      this.props.app_setCurrentUser({email: this.state.userEmail, token: token})
+    } else {
+      this.setState({errorMsg: data.error})
+    }
   }
 
   _setValue(obj) {

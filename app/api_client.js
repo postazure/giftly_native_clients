@@ -55,7 +55,7 @@ export default class ApiClient {
     .done();
   }
 
-  post(uriInfo, data, cb) {
+  post(uriInfo, data, onSuccess, onError) {
     let url = this._buildURL(uriInfo);
     let headers = uriInfo.headers || this.getHeaders();
     let jsonData = JSON.stringify(data)
@@ -67,7 +67,7 @@ export default class ApiClient {
     })
       .then((response) => response.json())
       .then((responseData) => {
-        cb(responseData)
+        onSuccess(responseData)
       })
       .done();
   }
